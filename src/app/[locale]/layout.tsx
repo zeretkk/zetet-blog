@@ -13,6 +13,7 @@ const sourceSerif = Source_Serif_4({ subsets: ['latin', 'cyrillic'], variable: '
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n('meta.main')
   return {
+    metadataBase:new URL('https://zeret.pw'),
     title: {
       // absolute: 'zeRET | web-dev',
       template: 'zeRET | %s',
