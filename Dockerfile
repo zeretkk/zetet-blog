@@ -8,4 +8,4 @@ RUN pnpm install
 RUN pnpm build
 
 EXPOSE 3000
-CMD ["pnpm", "start", "-p", "3000"]
+CMD ["pnpm", "start", "-p", "3000", "-H", "0.0.0.0"]
