@@ -1,0 +1,31 @@
+@import '@/styles/vars';
+.wrapper {
+  border-top: 1px solid $fg;
+  padding: 1rem;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.socialLinks {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  a {
+    color: $fg;
+    &:hover {
+      color: $purple;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+}

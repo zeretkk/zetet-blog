@@ -1,0 +1,32 @@
+@import '../styles/reset';
+@import '../styles/vars';
+
+body {
+  background-color: $bg;
+  color: $fg;
+  font-family: var(--jbMono);
+}
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading);
+}
+
+@media screen and (max-width: 1440px) {
+  .container {
+    margin: 0 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    font-size: 12px;
+  }
+}
