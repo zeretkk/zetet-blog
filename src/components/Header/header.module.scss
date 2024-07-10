@@ -13,7 +13,7 @@
 .title {
   background-color: $yellow;
   color: $bg;
-  padding: 0 0.5em;
+  padding: 0 1rem;
   position: relative;
   &::after {
     position: absolute;
@@ -70,5 +70,11 @@
       height: 1px;
       width: 100%;
     }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    display: none;
   }
 }
