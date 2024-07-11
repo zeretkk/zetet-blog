@@ -1,4 +1,4 @@
-import { UnderConstruction } from '@/components/UnderConstruction/UnderConstruction'
+import { UnderConstruction } from '@/components'
 import { NextPage } from 'next'
 
 const BlogPage: NextPage = () => {
