@@ -48,6 +48,14 @@
   }
 }
 
+.projectsContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
 @media screen and (max-width: 900px) {
   .mainGroup {
     flex-wrap: wrap;
@@ -66,6 +74,10 @@
   .contentItem {
     flex: 1 0 100%;
   }
+  .projectsContainer {
+    gap: 1%;
+    row-gap: 0.7rem;
+  }
 }
 @media screen and (max-width: 480px) {
   .imageContainer {
@@ -73,5 +85,8 @@
       width: 100%;
       height: auto;
     }
+  }
+  .projectsContainer {
+    flex-direction: column;
   }
 }

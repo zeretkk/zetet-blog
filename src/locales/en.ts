@@ -21,6 +21,15 @@ export default {
     'After access to the internet became easier and I had my own laptop for the first time, I became interested in the design of websites. My first website was based on the Flask framework for python, it was a few pages with text output from a text files. The sources of this site are unfortunately lost to the ages',
   'about.bio.text3':
     'Later I decided that I would develop in the direction of frontend development and started learning React. After a little bit of understanding I joined a team to develop web interfaces for the Russian-speaking division of the IVAO network, where I got acquainted with modern development concepts and teamwork principle',
+  'about.projects.title': 'Projects',
+  'about.projects.position': 'Position',
+  'about.projects.front': 'Frontend-developer',
+  'about.projects.full': 'Fullstack-developer',
+  'about.projects.stack': 'Tech stack',
+  'about.projects.tours.description':
+    'The system allows division management to publish descriptions, rules and stages for new tours. Pilots and controllers can submit reports on the completion of tour stages. Based on the results of a tour, the division management can assign awards',
+  'about.projects.plandi.description':
+    'A site for designers architects and engineers. Users can find jobs, publish their vacancies or orders for freelancers. Designers and engineers are able to publish and sell their designs and models. The project also offers an "Online Office" service, which gives teams an interface for project management, with a kanban board and a Gantt chart display of tasks. Site administrators and users can also create blog posts.',
   'meta.main.description': "web-developer's personal page",
   'meta.about.title': 'Information about developer',
   'tech.wip': 'This section is under construction',
