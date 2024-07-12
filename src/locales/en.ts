@@ -32,5 +32,7 @@ export default {
     'A site for designers architects and engineers. Users can find jobs, publish their vacancies or orders for freelancers. Designers and engineers are able to publish and sell their designs and models. The project also offers an "Online Office" service, which gives teams an interface for project management, with a kanban board and a Gantt chart display of tasks. Site administrators and users can also create blog posts.',
   'meta.main.description': "web-developer's personal page",
   'meta.about.title': 'Information about developer',
+  'meta.blog.title': "Developer's Blog",
+  'meta.blog.description': 'Developer shares his thoughts on various things',
   'tech.wip': 'This section is under construction',
 } as const

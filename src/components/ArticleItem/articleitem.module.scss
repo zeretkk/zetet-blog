@@ -1,0 +1,42 @@
+@import '@/styles/vars';
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.headingSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+.author {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: $green;
+}
+.heading {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: $fg;
+  text-decoration: none;
+  h2 {
+    font-size: 1em;
+  }
+}
+.icon {
+  display: block;
+}
+@media screen and (max-width: 900px) {
+  .icon {
+    display: none;
+  }
+  .headingSection {
+    flex-wrap: wrap;
+  }
+  .timeDesktop {
+    display: none;
+  }
+}
