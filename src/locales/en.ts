@@ -35,4 +35,7 @@ export default {
   'meta.blog.title': "Developer's Blog",
   'meta.blog.description': 'Developer shares his thoughts on various things',
   'tech.wip': 'This section is under construction',
+  'tech.notFound.title': 'Page not Found',
+  'tech.notFound.link': 'Back to home',
+  'tech.notFound.author': 'Image author',
 } as const

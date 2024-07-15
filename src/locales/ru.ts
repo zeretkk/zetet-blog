@@ -35,4 +35,7 @@ export default {
   'meta.blog.title': 'Блог разработчика',
   'meta.blog.description': 'Разработчик делится своими мыслями о разных штуках',
   'tech.wip': 'Этот раздел находится в разработке',
+  'tech.notFound.title': 'Страница не найдена',
+  'tech.notFound.link': 'Вернуться на главную',
+  'tech.notFound.author': 'Автор изображения',
 } as const
