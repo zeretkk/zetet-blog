@@ -8,6 +8,7 @@ import { Container } from '@mantine/core'
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getScopedI18n('meta.blog')
+
   return {
     title: t('title'),
     description: t('description'),
@@ -21,9 +22,9 @@ const BlogPage: NextPage = async () => {
   return (
     <Container mih={'100dvh'}>
       <h1>{t('header.blog')}</h1>
-        <HydrationBoundary state={dehydrate(queryClient)}>
-          <ArticleList />
-        </HydrationBoundary>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <ArticleList />
+      </HydrationBoundary>
     </Container>
   )
 }
