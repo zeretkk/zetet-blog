@@ -4,13 +4,14 @@ import classes from './header.module.scss'
 import clsx from 'clsx'
 import { getScopedI18n } from '@/locales/server'
 import { LangSwitch } from '../LangSwitch/LangSwitch'
+import { Container, Title } from '@mantine/core'
 
 export const Header: FC = async () => {
   const t = await getScopedI18n('header')
   return (
     <header className={classes.wrapper}>
-      <div className={clsx(classes.content, 'container')}>
-        <h1 className={classes.title}>zeRET</h1>
+      <Container className={clsx(classes.content)}>
+        <Title component={'p'} c={'black'} className={classes.title}>zeRET</Title>
         <nav className={classes.navbar}>
           <Link className={classes.link} href='/'>
             {t('home')}
@@ -23,7 +24,7 @@ export const Header: FC = async () => {
           </Link>
           <LangSwitch variant='link' className={classes.link} />
         </nav>
-      </div>
+      </Container>
     </header>
   )
 }

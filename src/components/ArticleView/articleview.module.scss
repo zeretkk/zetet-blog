@@ -1,0 +1,40 @@
+@import '@/styles/vars';
+.wrapper {
+  // display: flex;
+  min-height: 100dvh;
+}
+.content {
+  margin: 1rem 0;
+}
+.head {
+  margin-bottom: 1rem;
+}
+.heading {
+  font-size: 2.2rem;
+}
+.headInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.image {
+  display: block;
+  height: auto;
+  width: auto;
+  margin: 0 auto;
+}
+
+.body {
+  margin: 1rem 0;
+}
+
+.commentsHeading {
+  font-size: 1.5rem;
+}
+.commentsContainer {
+  //   background-color: $cl;
+  padding: 1rem 0;
+}
