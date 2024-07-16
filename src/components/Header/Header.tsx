@@ -11,7 +11,9 @@ export const Header: FC = async () => {
   return (
     <header className={classes.wrapper}>
       <Container className={clsx(classes.content)}>
-        <Title component={'p'} c={'black'} className={classes.title}>zeRET</Title>
+        <Title component={'p'} c={'black'} className={classes.title}>
+          zeRET
+        </Title>
         <nav className={classes.navbar}>
           <Link className={classes.link} href='/'>
             {t('home')}

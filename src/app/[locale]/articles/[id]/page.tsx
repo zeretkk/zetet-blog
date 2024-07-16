@@ -11,7 +11,6 @@ type Props = {
   }
 }
 
-
 const ArticlePage: NextPage<Props> = async ({ params: { id } }) => {
   const articleId = parseInt(id)
   if (isNaN(articleId)) {
@@ -26,7 +25,7 @@ const ArticlePage: NextPage<Props> = async ({ params: { id } }) => {
   return (
     <main className={'container'}>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <ArticleView id={articleId}/>
+        <ArticleView id={articleId} />
       </HydrationBoundary>
     </main>
   )

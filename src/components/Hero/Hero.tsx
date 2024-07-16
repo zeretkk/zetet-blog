@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import {  getScopedI18n } from '@/locales/server'
+import { getScopedI18n } from '@/locales/server'
 import { Flex, Text, Title } from '@mantine/core'
 
 export const Hero: FC = async () => {

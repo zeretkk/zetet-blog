@@ -57,7 +57,7 @@
   "lint-staged": {
     "**/*": "prettier -w ./src --ignore-unknown",
     "src/**/*.{ts,tsx}": [
-      "pnpm eslint ./src --fix"
+      "pnpm eslint ./src --fix --color"
     ]
   }
 }

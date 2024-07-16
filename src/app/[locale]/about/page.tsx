@@ -47,7 +47,9 @@ const AboutPage: NextPage = async () => {
   return (
     <Container className={classes.wrapper} mb={'1.5rem'}>
       <div className={classes.topGroup}>
-        <Title order={1} c={'black'} className={classes.title}>{t('kirill')}</Title>
+        <Title order={1} c={'black'} className={classes.title}>
+          {t('kirill')}
+        </Title>
       </div>
       <main className={classes.mainGroup}>
         <div className={classes.main}>
@@ -79,8 +81,8 @@ const AboutPage: NextPage = async () => {
         <hr />
         <Grid mt='md'>
           {projects.map((project, idx) => (
-            <GridCol span={{base:12, sm: 6}} key={idx}>
-              <PortfolioItem project={project}  />
+            <GridCol span={{ base: 12, sm: 6 }} key={idx}>
+              <PortfolioItem project={project} />
             </GridCol>
           ))}
         </Grid>
