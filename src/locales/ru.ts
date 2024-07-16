@@ -40,4 +40,5 @@ export default {
   'tech.notFound.title': 'Страница не найдена',
   'tech.notFound.link': 'Вернуться на главную',
   'tech.notFound.author': 'Автор изображения',
+  'button.more': 'Больше',
 } as const

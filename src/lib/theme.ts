@@ -9,7 +9,7 @@ const CONTAINER_SIZES: Record<string, string> = {
   md: rem(600),
   lg: rem(900),
   xl: rem(1440),
-};
+}
 export const theme = (
   textFont: NextFontWithVariable,
   headingFont: NextFontWithVariable,
@@ -44,7 +44,7 @@ export const theme = (
     Text: Text.extend({
       defaultProps: {
         c: 'white',
-      }
+      },
     }),
     Container: Container.extend({
       vars: (_, { size, fluid }) => ({
@@ -56,9 +56,9 @@ export const theme = (
               : rem(size),
         },
       }),
-      defaultProps:{
-        size: 'xl'
-      }
+      defaultProps: {
+        size: 'xl',
+      },
     }),
   },
 })

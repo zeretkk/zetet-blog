@@ -2,7 +2,7 @@ import { getScopedI18n } from '@/locales/server'
 import Image from 'next/image'
 import { FC } from 'react'
 import classes from './portfolioitem.module.scss'
-import { Card, Text, Title } from '@mantine/core'
+import { Card, CardSection, Stack, Text, Title } from '@mantine/core'
 type Props = {
   project: {
     title: string
@@ -18,14 +18,16 @@ export const PortfolioItem: FC<Props> = async ({ project }) => {
   return (
     <Card>
       <Title order={3}>{project.title}</Title>
-      <Image
-        className={classes.poster}
-        src={project.imageUrl}
-        alt={project.title}
-        width={800}
-        height={600}
-      />
-      <div className={classes.textContainer}>
+      <CardSection>
+        <Image
+          className={classes.poster}
+          src={project.imageUrl}
+          alt={project.title}
+          width={800}
+          height={600}
+        />
+      </CardSection>
+      <Stack>
         <Text>
           {t('position')}: {project.position}
         </Text>
@@ -33,7 +35,7 @@ export const PortfolioItem: FC<Props> = async ({ project }) => {
           {t('stack')}: {project.stack.join(', ')}
         </Text>
         <Text>{project.description}</Text>
-      </div>
+      </Stack>
     </Card>
   )
 }
