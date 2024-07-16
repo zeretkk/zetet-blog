@@ -1,0 +1,104 @@
+@import '@/styles/vars';
+.dropdown {
+  padding: 0;
+  border: 1px solid $fg;
+}
+.itemRoot {
+  background-color: var(--mantine-color-body);
+  text-align: left;
+  position: relative;
+  &::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    z-index: 301;
+    background: $purple;
+    transition: 0.4s ease width;
+  }
+  &:hover {
+    background-color: var(--mantine-color-body);
+    &::before {
+      width: 100%;
+    }
+    .itemLabel {
+      color: $bg;
+    }
+  }
+}
+.itemLabel {
+  z-index: 302;
+  transition: 0.4s ease color;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.trigger {
+  color: $fg;
+  text-decoration: none;
+  font-size: 1.3rem;
+  transition: 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 0.5em;
+  &:hover {
+    color: $bg;
+  }
+  &::before {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    transition: 0.4s ease;
+    top: -150%;
+    left: 0;
+    background-color: $purple;
+  }
+  &:hover {
+    &::before {
+      top: 0;
+    }
+    &::after {
+      position: absolute;
+      content: ' ';
+      display: block;
+      background-color: $purple;
+      bottom: -1px;
+      left: 0;
+      height: 1px;
+      width: 100%;
+    }
+  }
+}
+.activeTrigger {
+  color: $bg;
+  &::before {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    transition: 0.4s ease;
+    top: 0;
+    left: 0;
+    background-color: $purple;
+  }
+  &::after {
+    position: absolute;
+    content: ' ';
+    display: block;
+    background-color: $purple;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+  }
+}

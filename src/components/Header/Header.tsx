@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { getScopedI18n } from '@/locales/server'
 import { LangSwitch } from '../LangSwitch/LangSwitch'
 import { Container, Title } from '@mantine/core'
+import { HeaderMenu } from '../HeaderMenu/HeaderMenu'
 
 export const Header: FC = async () => {
   const t = await getScopedI18n('header')
@@ -21,9 +22,7 @@ export const Header: FC = async () => {
           <Link className={classes.link} href='/about'>
             {t('about')}
           </Link>
-          <Link className={classes.link} href='/articles'>
-            {t('blog')}
-          </Link>
+          <HeaderMenu />
           <LangSwitch variant='link' className={classes.link} />
         </nav>
       </Container>

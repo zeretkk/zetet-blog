@@ -40,5 +40,6 @@ export default {
   'tech.notFound.title': 'Page not Found',
   'tech.notFound.link': 'Back to home',
   'tech.notFound.author': 'Image author',
+  'tech.no-records': 'No records found',
   'button.more': 'More',
 } as const

@@ -4,7 +4,7 @@ import { useArticlesQuery } from '@/lib/api/articles/articles.query'
 import { FC } from 'react'
 import { ArticleItem } from '../ArticleItem/ArticleItem'
 import { ArticleItemSkeleton } from '../ArticleItem/ArticleItemSkeleton'
-import { Button, Flex } from '@mantine/core'
+import { Button, Center, Flex } from '@mantine/core'
 import { useI18n } from '@/locales/client'
 
 export const ArticleList: FC = () => {
@@ -16,6 +16,9 @@ export const ArticleList: FC = () => {
     fetchNextPage,
   } = useArticlesQuery()
   const t = useI18n()
+  if (!isLoading && (articles?.pages?.[0].count ?? 0) < 1) {
+    return <Center>{t('tech.no-records')}</Center>
+  }
   return (
     <Flex align={'stretch'} direction={'column'} gap={'md'} py='md'>
       {isLoading ? (
