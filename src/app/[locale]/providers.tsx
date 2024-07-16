@@ -2,16 +2,24 @@
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { getQueryClient } from '@/lib/queryClient'
-import { SkeletonTheme } from 'react-loading-skeleton'
+import { MantineProvider } from '@mantine/core'
+import {theme} from '@/lib/theme'
+import { NextFontWithVariable } from 'next/dist/compiled/@next/font'
+import { PropsWithChildren } from 'react'
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+type Props = {
+  textFont: NextFontWithVariable,
+  headingFont: NextFontWithVariable,
+}
+
+export default function Providers({ children, textFont, headingFont }: PropsWithChildren & Props) {
   const queryClient = getQueryClient()
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SkeletonTheme baseColor='#44475a' highlightColor='#6272a4'>
-        {children}
-      </SkeletonTheme>
+        <MantineProvider theme={theme(textFont, headingFont)} defaultColorScheme={'dark'}>
+          {children}
+        </MantineProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   )

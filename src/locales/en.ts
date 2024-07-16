@@ -27,7 +27,9 @@ export default {
   'about.projects.full': 'Fullstack-developer',
   'about.projects.stack': 'Tech stack',
   'about.projects.tours.description':
-    'The system allows division management to publish descriptions, rules and stages for new tours. Pilots and controllers can submit reports on the completion of tour stages. Based on the results of a tour, the division management can assign awards',
+    'The system is used by management to publish divisional tours and track the progress of tour milestones by IVAO network users.\n' +
+    'Divisional management can publish new tours, review progress reports, and assign awards to users who have met all the conditions to receive them.\n' +
+    'Users can see active tours and descriptions of their stages, leave reports on the completion of individual stages, view their progress and compare it with the statistics of other users.',
   'about.projects.plandi.description':
     'A site for designers architects and engineers. Users can find jobs, publish their vacancies or orders for freelancers. Designers and engineers are able to publish and sell their designs and models. The project also offers an "Online Office" service, which gives teams an interface for project management, with a kanban board and a Gantt chart display of tasks. Site administrators and users can also create blog posts.',
   'meta.main.description': "web-developer's personal page",

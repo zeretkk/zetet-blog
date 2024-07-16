@@ -2,8 +2,8 @@ import { Metadata, NextPage } from 'next'
 import classes from './about.module.scss'
 import { getScopedI18n } from '@/locales/server'
 import Image from 'next/image'
-import clsx from 'clsx'
 import { PortfolioItem } from '@/components'
+import { Container, Grid, GridCol, Text, Title } from '@mantine/core'
 
 const getProjects = async (): Promise<
   {
@@ -45,16 +45,16 @@ const AboutPage: NextPage = async () => {
   const t = await getScopedI18n('about')
   const projects = await getProjects()
   return (
-    <div className={clsx('container', classes.wrapper)}>
+    <Container className={classes.wrapper} mb={'1.5rem'}>
       <div className={classes.topGroup}>
-        <h1 className={classes.title}>{t('kirill')}</h1>
+        <Title order={1} c={'black'} className={classes.title}>{t('kirill')}</Title>
       </div>
       <main className={classes.mainGroup}>
         <div className={classes.main}>
-          <p>{t('dev')}</p>
-          <p>{t('main')}</p>
-          <p>{t('libs')}</p>
-          <p>{t('also')}</p>
+          <Text>{t('dev')}</Text>
+          <Text>{t('main')}</Text>
+          <Text>{t('libs')}</Text>
+          <Text>{t('also')}</Text>
         </div>
         <div className={classes.imageContainer}>
           <Image src='/CODESych-nobg.png' width={360} height={360} alt='zeRET' />
@@ -62,28 +62,30 @@ const AboutPage: NextPage = async () => {
       </main>
       <section className={classes.contentGroup}>
         <div className={classes.contentItem}>
-          <h2>{t('bio')}</h2>
+          <Title order={2}>{t('bio')}</Title>
           <hr />
-          <p>{t('bio.text')}</p>
-          <p>{t('bio.text2')}</p>
-          <p>{t('bio.text3')}</p>
+          <Text>{t('bio.text')}</Text>
+          <Text>{t('bio.text2')}</Text>
+          <Text>{t('bio.text3')}</Text>
         </div>
         <div className={classes.contentItem}>
-          <h2>{t('hobbies')}</h2>
+          <Title order={2}>{t('hobbies')}</Title>
           <hr />
-          <p>{t('hobbies.text')}</p>
+          <Text>{t('hobbies.text')}</Text>
         </div>
       </section>
       <section>
-        <h2>{t('projects.title')}</h2>
+        <Title order={2}>{t('projects.title')}</Title>
         <hr />
-        <div className={classes.projectsContainer}>
+        <Grid mt='md'>
           {projects.map((project, idx) => (
-            <PortfolioItem project={project} key={idx} />
+            <GridCol span={{base:12, sm: 6}} key={idx}>
+              <PortfolioItem project={project}  />
+            </GridCol>
           ))}
-        </div>
+        </Grid>
       </section>
-    </div>
+    </Container>
   )
 }
 
