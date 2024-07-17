@@ -14,15 +14,46 @@ export const HeaderMenu: FC = () => {
   return (
     <Menu trigger='click-hover' opened={opened} onChange={setOpened}>
       <MenuTarget>
-        <p className={clsx(classes.trigger, { [classes.activeTrigger]: opened })}>
+        <button
+          className={clsx(classes.trigger, { [classes.activeTrigger]: opened })}
+          aria-label={'Menu'}
+        >
           <IconMenu />
-        </p>
+        </button>
       </MenuTarget>
       <MenuDropdown
         classNames={{
           dropdown: classes.dropdown,
         }}
       >
+        <MenuItem
+          component={Link}
+          href={'/'}
+          py={12}
+          pr={36}
+          pl={'sm'}
+          c='white'
+          classNames={{
+            item: clsx(classes.itemRoot, classes.itemRootTransferred),
+            itemLabel: classes.itemLabel,
+          }}
+        >
+          {t('home')}
+        </MenuItem>
+        <MenuItem
+          component={Link}
+          href={'/about'}
+          py={12}
+          pr={36}
+          pl={'sm'}
+          c='white'
+          classNames={{
+            item: clsx(classes.itemRoot, classes.itemRootTransferred),
+            itemLabel: classes.itemLabel,
+          }}
+        >
+          {t('about')}
+        </MenuItem>
         <MenuItem
           component={Link}
           href={'/articles'}
