@@ -20,24 +20,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const queryClient = getQueryClient()
   await queryClient.prefetchQuery(ArticleByIdQueryOptions(articleId))
   const data = queryClient.getQueryData(ArticleByIdQueryOptions(articleId).queryKey)
+  console.log(data)
   if (!data) {
     return {
       title: 'NotFoundError',
     }
   }
   return {
-    title: data.title,
-    description: data.description,
-    authors: [{ name: data.author.username }],
+    title: data.attributes.title,
+    description: data.attributes.description,
+    authors: [{ name: data.attributes.author.data.attributes.firstname }],
     twitter: {
-      title: data.title,
-      images: data.posterUrl,
-      description: data.description,
+      title: data.attributes.title,
+      // images: data.attributes.posterUrl,
+      description: data.attributes.description,
     },
     openGraph: {
-      title: data.title,
-      images: data.posterUrl,
-      description: data.description,
+      title: data.attributes.title,
+      // images: data.attributes.posterUrl,
+      description: data.attributes.description,
     },
   }
 }

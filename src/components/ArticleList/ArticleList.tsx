@@ -16,7 +16,7 @@ export const ArticleList: FC = () => {
     fetchNextPage,
   } = useArticlesQuery()
   const t = useI18n()
-  if (!isLoading && (articles?.pages?.[0].count ?? 0) < 1) {
+  if (!isLoading && (articles?.pages?.[0]?.meta?.pagination?.pageCount ?? 0) < 1) {
     return <Center>{t('tech.no-records')}</Center>
   }
   return (

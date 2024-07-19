@@ -1,39 +1,62 @@
 import { PublicUserData } from '@/lib/api/user/user.types'
+import { BlocksContent } from '@strapi/blocks-react-renderer'
 
 export type Article = {
   id: number
-  created_at: string
-  edited_at: string
+  attributes: ArticleAttributes
+}
+export type ArticleAttributes = {
   title: string
   description: string
-  body: string
-  authorId: number
-  deleted?: boolean
-  deleted_at?: string
-  deletedReason?: string
-  posterUrl?: string
-  tags: {
-    articleId: number
-    tagId: number
-    tag: {
-      id: number
-      title: string
-    }
+  body: BlocksContent
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  locale: string
+  author: Author
+  tags: Tags
+}
+export type Author = {
+  data: {
+    id: number
+    attributes: Pick<PublicUserData['attributes'], 'firstname'>
+  }
+}
+
+export type Body = {
+  type: string
+  children: Child[]
+  level?: number
+}
+
+export type Child = {
+  bold?: boolean
+  text: string
+  type: string
+  italic?: boolean
+  underline?: boolean
+}
+
+export type Tags = {
+  data: {
+    id: number
+    attributes: { name: string }
   }[]
-  author: Pick<PublicUserData, 'id' | 'username' | 'group' | 'lastOnline'>
 }
 
 export type AllArticleResponse = {
   data: Article[]
-  count: number
-  lastPage: number
-  currentPage: number
+  meta: {
+    pagination: {
+      page: number
+      pageSize: number
+      pageCount: number
+      total: number
+    }
+  }
 }
 
-export type CreateArticleDto = {
-  posterUrl?: string
-  title: string
-  description: string
-  body: string
-  tags?: string[]
+export type SingeArticleResponse = {
+  data: Article
+  meta: Record<string, any>
 }
