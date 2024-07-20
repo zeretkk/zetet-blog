@@ -47,11 +47,6 @@ export const ArticleView: FC<Props> = ({ id }) => {
           />
         </div>
       </article>
-      <div className={classes.commentsContainer}>
-        <hr />
-        <p className={classes.commentsHeading}>Комментарии:</p>
-        {/* <hr /> */}
-      </div>
     </div>
   )
 }
