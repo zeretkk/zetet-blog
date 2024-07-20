@@ -20,7 +20,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const queryClient = getQueryClient()
   await queryClient.prefetchQuery(ArticleByIdQueryOptions(articleId))
   const data = queryClient.getQueryData(ArticleByIdQueryOptions(articleId).queryKey)
-  console.log(data)
   if (!data) {
     return {
       title: 'NotFoundError',

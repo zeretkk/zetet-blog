@@ -52,6 +52,7 @@ export const ArticleByIdQueryOptions = (id: number) =>
               tags: {
                 fields: 'name',
               },
+              poster: true,
             },
           },
         })

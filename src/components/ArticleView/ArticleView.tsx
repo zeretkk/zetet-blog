@@ -7,6 +7,7 @@ import classes from './articleview.module.scss'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import { Anchor, Text, Title } from '@mantine/core'
 import Link from 'next/link'
+import Image from 'next/image'
 
 type Props = {
   id: number
@@ -26,6 +27,15 @@ export const ArticleView: FC<Props> = ({ id }) => {
             <h1 className={classes.heading}>{article?.title}</h1>
             <p>{dayjs(article?.createdAt).format('DD.MM.YYYY HH:mm')}</p>
           </div>
+          {article?.poster && (
+            <Image
+              className={classes.image}
+              alt={article.title}
+              src={article.poster.data.attributes.formats.medium.url}
+              width={600}
+              height={300}
+            />
+          )}
         </div>
         <hr />
         <div className={classes.body}>
@@ -39,7 +49,7 @@ export const ArticleView: FC<Props> = ({ id }) => {
                 </Title>
               ),
               link: ({ children, url }) => (
-                <Anchor component={Link} href={url}>
+                <Anchor component={Link} href={url} c={'purple'} underline={'always'}>
                   {children}
                 </Anchor>
               ),

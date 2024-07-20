@@ -15,26 +15,15 @@ export type ArticleAttributes = {
   locale: string
   author: Author
   tags: Tags
+  poster?: {
+    data: Poster
+  }
 }
 export type Author = {
   data: {
     id: number
     attributes: Pick<PublicUserData['attributes'], 'firstname'>
   }
-}
-
-export type Body = {
-  type: string
-  children: Child[]
-  level?: number
-}
-
-export type Child = {
-  bold?: boolean
-  text: string
-  type: string
-  italic?: boolean
-  underline?: boolean
 }
 
 export type Tags = {
@@ -45,7 +34,7 @@ export type Tags = {
 }
 
 export type AllArticleResponse = {
-  data: Article[]
+  data: Exclude<Article, 'poster'>[]
   meta: {
     pagination: {
       page: number
@@ -54,6 +43,44 @@ export type AllArticleResponse = {
       total: number
     }
   }
+}
+export type Poster = {
+  id: 3
+  attributes: {
+    name: string
+    alternativeText?: string
+    caption?: string
+    width: number
+    height: number
+    formats: {
+      small: PosterFormat
+      medium: PosterFormat
+      thumbnail: PosterFormat
+    }
+    hash: string
+    ext: string
+    mime: string
+    size: number
+    url: number
+    previewUrl: null
+    provider: string
+    provider_metadata: null
+    createdAt: string
+    updatedAt: string
+  }
+}
+
+export type PosterFormat = {
+  ext: string
+  url: string
+  hash: string
+  mime: string
+  name: string
+  path: null
+  size: number
+  width: number
+  height: number
+  sizeInBytes: number
 }
 
 export type SingeArticleResponse = {
