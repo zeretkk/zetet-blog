@@ -1,5 +1,5 @@
 import { ArticleList } from '@/components'
-import { ArticlesQueryOptions } from '@/lib/api/articles/articles.query'
+import { getArticlesQueryOptions } from '@/lib/api/articles/articles.query'
 import { getQueryClient } from '@/lib/queryClient'
 import { getCurrentLocale, getI18n, getScopedI18n } from '@/locales/server'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
@@ -20,13 +20,13 @@ const BlogPage: NextPage = async () => {
   const t = await getI18n()
   const locale = getCurrentLocale()
   const queryClient = getQueryClient()
-  await queryClient.prefetchInfiniteQuery(ArticlesQueryOptions)
+  await queryClient.prefetchInfiniteQuery(getArticlesQueryOptions(locale))
   return (
     <Container mih={'100dvh'}>
       <h1>{t('header.blog')}</h1>
       {locale !== 'ru' && (
         <Alert icon={<IconExclamationCircle />} color={'green'}>
-          The content of this section is currently available in Russian only
+          Not all content in this section may be available in English
         </Alert>
       )}
       <HydrationBoundary state={dehydrate(queryClient)}>

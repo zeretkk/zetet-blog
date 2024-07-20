@@ -14,18 +14,18 @@ export const ArticleItem: FC<Props> = (props) => {
     <article>
       <div className={classes.top}>
         <div className={classes.headingSection}>
-          <p className={classes.author}>{article.author.username}</p>
+          <p className={classes.author}>{article.attributes.author.data.attributes.firstname}</p>
           <IconSlash className={classes.icon} />
           <Link href={`/articles/${article.id}`} className={classes.heading}>
-            <h2>{article.title}</h2>
+            <h2>{article.attributes.title}</h2>
           </Link>
         </div>
         <p className={classes.timeDesktop}>
-          {dayjs(article.created_at).format('DD.MM.YYYY HH:mm')}
+          {dayjs(article.attributes.createdAt).format('DD.MM.YYYY HH:mm')}
         </p>
       </div>
       <div>
-        <p>{article.description}</p>
+        <p>{article.attributes.description}</p>
       </div>
     </article>
   )
