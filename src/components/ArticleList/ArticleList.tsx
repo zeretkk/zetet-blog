@@ -2,8 +2,8 @@
 
 import { useArticlesQuery } from '@/lib/api/articles/articles.query'
 import { FC } from 'react'
-import { ArticleItem } from '../ArticleItem/ArticleItem'
-import { ArticleItemSkeleton } from '../ArticleItem/ArticleItemSkeleton'
+import { ArticleItem } from '@/components/ArticleItem/ArticleItem'
+import { ArticleItemSkeleton } from '@/components/ArticleItem/ArticleItemSkeleton'
 import { Button, Center, Flex } from '@mantine/core'
 import { useI18n } from '@/locales/client'
 
