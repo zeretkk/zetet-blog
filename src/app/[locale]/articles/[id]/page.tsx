@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArticleByIdQueryOptions } from '@/lib/api/articles/articles.query'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { ArticleView } from '@/components/ArticleView/ArticleView'
+import { Container } from '@mantine/core'
 
 type Props = {
   params: {
@@ -54,11 +55,11 @@ const ArticlePage: NextPage<Props> = async ({ params: { id } }) => {
   }
 
   return (
-    <main className={'container'}>
+    <Container>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <ArticleView id={articleId} />
       </HydrationBoundary>
-    </main>
+    </Container>
   )
 }
 export default ArticlePage

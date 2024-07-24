@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 import { notFound } from 'next/navigation'
 import classes from './articleview.module.scss'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer'
-import { Anchor, Text, Title } from '@mantine/core'
+import { Anchor, Group, Text, Title } from '@mantine/core'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -23,10 +23,12 @@ export const ArticleView: FC<Props> = ({ id }) => {
     <div className={classes.wrapper}>
       <article className={classes.content}>
         <div className={classes.head}>
-          <div className={classes.headInfo}>
-            <h1 className={classes.heading}>{article?.title}</h1>
-            <p>{dayjs(article?.createdAt).format('DD.MM.YYYY HH:mm')}</p>
-          </div>
+          <Group justify={'space-between'}>
+            <Title order={1} my={'md'}>
+              {article?.title}
+            </Title>
+            <Text c={'dark.1'}>{dayjs(article?.createdAt).format('DD.MM.YYYY HH:mm')}</Text>
+          </Group>
           {article?.poster && (
             <Image
               className={classes.image}

@@ -1,10 +1,10 @@
-import { ArticleList } from '@/components'
+import { ArticleList } from '@/components/ArticleList'
 import { getArticlesQueryOptions } from '@/lib/api/articles/articles.query'
 import { getQueryClient } from '@/lib/queryClient'
 import { getCurrentLocale, getI18n, getScopedI18n } from '@/locales/server'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { Metadata, NextPage } from 'next'
-import { Alert, Container } from '@mantine/core'
+import { Alert, Container, Title } from '@mantine/core'
 import { IconExclamationCircle } from '@tabler/icons-react'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -23,7 +23,9 @@ const BlogPage: NextPage = async () => {
   await queryClient.prefetchInfiniteQuery(getArticlesQueryOptions(locale))
   return (
     <Container mih={'100dvh'}>
-      <h1>{t('header.blog')}</h1>
+      <Title my={'md'} order={1}>
+        {t('header.blog')}
+      </Title>
       {locale !== 'ru' && (
         <Alert icon={<IconExclamationCircle />} color={'green'}>
           Not all content in this section may be available in English

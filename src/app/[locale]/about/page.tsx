@@ -2,8 +2,13 @@ import { Metadata, NextPage } from 'next'
 import classes from './about.module.scss'
 import { getScopedI18n } from '@/locales/server'
 import Image from 'next/image'
-import { PortfolioItem } from '@/components'
+import { PortfolioItem } from '@/components/PortfolioItem'
 import { Container, Grid, GridCol, Text, Title } from '@mantine/core'
+import { setStaticParamsLocale } from 'next-international/server'
+
+export async function generateStaticParams() {
+  return [{ locale: 'ru' }, { locale: 'en' }]
+}
 
 const getProjects = async (): Promise<
   {
@@ -33,7 +38,12 @@ const getProjects = async (): Promise<
   ]
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: 'ru' | 'en' }
+}): Promise<Metadata> {
+  setStaticParamsLocale(locale)
   const t = await getScopedI18n('meta')
   return {
     title: t('about.title'),
@@ -41,7 +51,8 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const AboutPage: NextPage = async () => {
+const AboutPage: NextPage<{ params: { locale: 'ru' | 'en' } }> = async ({ params: { locale } }) => {
+  setStaticParamsLocale(locale)
   const t = await getScopedI18n('about')
   const projects = await getProjects()
   return (

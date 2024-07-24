@@ -35,6 +35,8 @@ export const theme = (
   headings: {
     fontFamily: headingFont.style.fontFamily,
   },
+  defaultRadius: 0,
+  autoContrast: true,
   components: {
     Title: Title.extend({
       defaultProps: {

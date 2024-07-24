@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import { IconSlash } from '@tabler/icons-react'
 import classes from './articleitem.module.scss'
 import Link from 'next/link'
-import { Anchor } from '@mantine/core'
+import { Anchor, Group, Text, Title } from '@mantine/core'
 type Props = {
   article: Article
 }
@@ -14,19 +14,21 @@ export const ArticleItem: FC<Props> = (props) => {
   return (
     <article>
       <div className={classes.top}>
-        <div className={classes.headingSection}>
-          <p className={classes.author}>{article.attributes.author.data.attributes.firstname}</p>
+        <Group gap={10} align={'center'}>
+          <Text c={'green'} fz={'h3'}>
+            {article.attributes.author.data.attributes.firstname}
+          </Text>
           <IconSlash className={classes.icon} />
           <Anchor component={Link} href={`/articles/${article.id}`} underline={'always'}>
-            <h2>{article.attributes.title}</h2>
+            <Title order={2}>{article.attributes.title}</Title>
           </Anchor>
-        </div>
-        <p className={classes.timeDesktop}>
+        </Group>
+        <Text c={'dark.1'} className={classes.timeDesktop}>
           {dayjs(article.attributes.createdAt).format('DD.MM.YYYY HH:mm')}
-        </p>
+        </Text>
       </div>
       <div>
-        <p>{article.attributes.description}</p>
+        <Text c={'dark.1'}>{article.attributes.description}</Text>
       </div>
     </article>
   )
