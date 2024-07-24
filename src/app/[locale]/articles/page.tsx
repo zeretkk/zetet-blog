@@ -13,6 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_BASE}/articles`,
+    },
   }
 }
 
