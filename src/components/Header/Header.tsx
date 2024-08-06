@@ -3,9 +3,9 @@ import { FC } from 'react'
 import classes from './header.module.scss'
 import clsx from 'clsx'
 import { getScopedI18n } from '@/locales/server'
-import { LangSwitch } from '../LangSwitch/LangSwitch'
+import { LangSwitch } from '@/components/LangSwitch'
 import { Container, Title } from '@mantine/core'
-import { HeaderMenu } from '../HeaderMenu/HeaderMenu'
+import { HeaderMenu } from '@/components/HeaderMenu'
 
 export const Header: FC = async () => {
   const t = await getScopedI18n('header')
@@ -23,7 +23,7 @@ export const Header: FC = async () => {
             {t('about')}
           </Link>
           <HeaderMenu />
-          <LangSwitch variant='link' className={classes.link} />
+          <LangSwitch variant='link' className={clsx(classes.link, classes.link_always)} />
         </nav>
       </Container>
     </header>

@@ -72,6 +72,9 @@
     }
   }
 }
+.link_always {
+  display: flex !important;
+}
 
 @media screen and (max-width: 480px) {
   .link {

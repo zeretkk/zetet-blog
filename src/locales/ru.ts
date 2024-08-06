@@ -2,6 +2,7 @@ export default {
   'header.home': 'Главная',
   'header.blog': 'Блог',
   'header.about': 'Информация',
+  'header.tools': 'Инструменты',
   'hero.title': 'Kirill zeRET',
   'hero.description': 'персональная страница web-разработчика',
   'about.kirill': 'Кирилл',
@@ -42,4 +43,17 @@ export default {
   'tech.notFound.author': 'Автор изображения',
   'tech.no-records': 'Записей не найдено',
   'button.more': 'Больше',
+  'tools.heading': 'Инструменты',
+  'tools.description':
+    'Полезные инструменты созданные и используемые разработчиком в разных жизненных, иногда игровых ситуациях.',
+  'tools.boxshadow.description':
+    'Инструмент для генерации кода CSS box-shadow с возможностью задать необходимые параметры и просмотреть их на живом примере.',
+  'tools.boxshadow.inset': 'Внутренняя',
+  'tools.boxshadow.horizontal': 'Горизонтальное смещение',
+  'tools.boxshadow.vertical': 'Вертикальное смещение',
+  'tools.boxshadow.blur': 'Размытие',
+  'tools.boxshadow.spread': 'Растяжение',
+  'tools.boxshadow.color': 'Цвет тени',
+  'tools.boxshadow.CanvasColor': 'Цвет подложки',
+  'tools.boxshadow.CardColor': 'Цвет карточки',
 } as const

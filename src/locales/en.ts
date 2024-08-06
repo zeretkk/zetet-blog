@@ -2,6 +2,7 @@ export default {
   'header.home': 'Home',
   'header.blog': 'Blog',
   'header.about': 'About',
+  'header.tools': 'Tools',
   'hero.title': 'Kirill zeRET',
   'hero.description': "web-developer's personal page",
   'about.kirill': 'Kirill',
@@ -42,4 +43,17 @@ export default {
   'tech.notFound.author': 'Image author',
   'tech.no-records': 'No records found',
   'button.more': 'More',
+  'tools.heading': 'Tools',
+  'tools.description':
+    'Useful tools created and used by the developer in different life and sometimes game situations.',
+  'tools.boxshadow.description':
+    'A CSS box-shadow code generation tool with the ability to set the required parameters and view them on a live example.',
+  'tools.boxshadow.inset': 'Inset',
+  'tools.boxshadow.horizontal': 'Horizontal offset',
+  'tools.boxshadow.vertical': 'Vertical offset',
+  'tools.boxshadow.blur': 'Blur',
+  'tools.boxshadow.spread': 'Spread',
+  'tools.boxshadow.color': 'Shadow color',
+  'tools.boxshadow.CanvasColor': 'Canvas color',
+  'tools.boxshadow.CardColor': 'Card color',
 } as const

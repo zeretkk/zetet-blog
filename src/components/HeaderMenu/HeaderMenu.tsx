@@ -68,6 +68,20 @@ export const HeaderMenu: FC = () => {
         >
           {t('blog')}
         </MenuItem>
+        <MenuItem
+          component={Link}
+          href={'/tools'}
+          py={12}
+          pr={36}
+          pl={'sm'}
+          c='white'
+          classNames={{
+            item: classes.itemRoot,
+            itemLabel: classes.itemLabel,
+          }}
+        >
+          {t('tools')}
+        </MenuItem>
       </MenuDropdown>
     </Menu>
   )
