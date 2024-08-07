@@ -5,7 +5,7 @@ import { BoxShadowContext } from './BoxShadowContext'
 import { useScopedI18n } from '@/locales/client'
 
 export const BoxShadowCanvas: FC = () => {
-  const { canvasData, setCanvasParam } = useContext(BoxShadowContext)
+  const { canvasData, setCanvasParam, data } = useContext(BoxShadowContext)
   const t = useScopedI18n('tools.boxshadow')
   return (
     <>
@@ -64,7 +64,17 @@ export const BoxShadowCanvas: FC = () => {
           },
         }}
       >
-        <Box h={'50%'} w={'50%'} bg={canvasData.card} display={'block'} py={'xl'} px={'xl'}>
+        <Box
+          h={'50%'}
+          w={'50%'}
+          bg={canvasData.card}
+          display={'block'}
+          py={'xl'}
+          px={'xl'}
+          style={{
+            boxShadow: `${data.horizontal}px ${data.vertical}px ${data.blur}px ${data.spread}px ${data.color}${data.isInset ? ' inset' : ''}`,
+          }}
+        >
           Test content
         </Box>
       </Card>
