@@ -51,6 +51,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
       },
     },
+    {
+      url: `${process.env.NEXT_PUBLIC_BASE}/tools`,
+      lastModified: new Date(),
+      alternates: {
+        languages: {
+          ru: `${process.env.NEXT_PUBLIC_BASE}/ru/tools`,
+          en: `${process.env.NEXT_PUBLIC_BASE}/en/tools`,
+        },
+      },
+    },
+    {
+      url: `${process.env.NEXT_PUBLIC_BASE}/tools/boxshadow`,
+      lastModified: new Date(),
+      alternates: {
+        languages: {
+          ru: `${process.env.NEXT_PUBLIC_BASE}/ru/tools/boxshadow`,
+          en: `${process.env.NEXT_PUBLIC_BASE}/en/tools/boxshadow`,
+        },
+      },
+    },
     ...articles.data?.data?.map((item) => ({
       url: `${process.env.NEXT_PUBLIC_BASE}/articles/${item.id}`,
       lastModified: dayjs(item.attributes.createdAt).toDate(),
