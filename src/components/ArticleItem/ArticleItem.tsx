@@ -15,8 +15,10 @@ export const ArticleItem: FC<Props> = (props) => {
     <article>
       <div className={classes.top}>
         <Group gap={10} align={'center'}>
-          <Text c={'green'} fz={'h3'}>
-            {article.attributes.author.data.attributes.firstname}
+          <Text c={article.attributes.author?.data ? 'green' : 'gray'} fz={'h3'}>
+            {article.attributes.author?.data
+              ? article.attributes.author?.data?.attributes.firstname
+              : 'Unknown author'}
           </Text>
           <IconSlash className={classes.icon} />
           <Anchor component={Link} href={`/articles/${article.id}`} underline={'always'}>

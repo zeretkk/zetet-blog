@@ -13,7 +13,7 @@ export type ArticleAttributes = {
   updatedAt: string
   publishedAt: string
   locale: string
-  author: Author
+  author?: Author
   tags: Tags
   poster?: {
     data: Poster
