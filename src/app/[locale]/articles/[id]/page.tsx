@@ -30,12 +30,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     //   : undefined,
     twitter: {
       title: data.title,
-      // images: data.attributes.posterUrl,
+      images: data?.poster?.formats?.thumbnail.url,
       description: data.description,
     },
     openGraph: {
       title: data.title,
-      // images: data.attributes.posterUrl,
+      images: data?.poster?.formats?.thumbnail.url,
       description: data.description,
     },
   }
