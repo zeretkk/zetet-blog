@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const apiClient = axios.create({
-  baseURL: 'https://back.zeret.pw/api',
+  baseURL: process.env.NEXT_PUBLIC_APU_URL,
   withCredentials: true,
   headers: {
     Accept: 'application/json',

@@ -4,7 +4,7 @@ import qs from 'qs'
 import { AllArticleResponse } from '@/lib/api/articles/articles.types'
 import dayjs from 'dayjs'
 
-const getArticles = async () => {
+const getArticlesUrl = async () => {
   const params = qs.stringify({
     sort: ['createdAt'],
     fields: ['id', 'updatedAt'],
@@ -14,12 +14,19 @@ const getArticles = async () => {
     publicationState: 'live',
     locale: ['en'],
   })
-  return apiClient.get<AllArticleResponse>(`/articles?${params}`)
+  try {
+    const articles = await apiClient.get<AllArticleResponse>(`/articles?${params}`)
+    return articles?.data?.data?.map((item) => ({
+      url: `${process.env.NEXT_PUBLIC_BASE}/articles/${item.id}`,
+      lastModified: dayjs(item.attributes.createdAt).toDate(),
+    }))
+  } catch {
+    return []
+  }
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const articles = await getArticles()
-  console.log(articles.data.data)
+  const articles = await getArticlesUrl()
   return [
     {
       url: `${process.env.NEXT_PUBLIC_BASE}`,
@@ -71,9 +78,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
       },
     },
-    ...articles.data?.data?.map((item) => ({
-      url: `${process.env.NEXT_PUBLIC_BASE}/articles/${item.id}`,
-      lastModified: dayjs(item.attributes.createdAt).toDate(),
-    })),
+    ...articles,
   ]
 }
