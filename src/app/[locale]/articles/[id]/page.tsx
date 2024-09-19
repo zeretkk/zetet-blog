@@ -15,7 +15,6 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const queryClient = getQueryClient()
   const locale = getCurrentLocale()
-  console.log('loc', locale)
   await queryClient.prefetchQuery(ArticleByIdQueryOptions(params.id, locale))
   const data = queryClient.getQueryData(ArticleByIdQueryOptions(params.id, locale).queryKey)
   if (!data) {
