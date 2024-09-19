@@ -1,11 +1,17 @@
-import { PublicUserData } from '@/lib/api/user/user.types'
 import { BlocksContent } from '@strapi/blocks-react-renderer'
 
-export type Article = {
-  id: number
-  attributes: ArticleAttributes
+export interface IAllArticleResponse {
+  data: IArticleItem[]
+  meta: IAllArticleResponseMeta
 }
-export type ArticleAttributes = {
+
+export type IArticleItem = Pick<
+  IArticle,
+  'id' | 'documentId' | 'title' | 'description' | 'publishedAt' | 'updatedAt'
+>
+
+export interface IArticle {
+  id: number
   title: string
   description: string
   body: BlocksContent
@@ -13,64 +19,39 @@ export type ArticleAttributes = {
   updatedAt: string
   publishedAt: string
   locale: string
-  author?: Author
-  tags: Tags
-  poster?: {
-    data: Poster
-  }
-}
-export type Author = {
-  data: {
-    id: number
-    attributes: Pick<PublicUserData['attributes'], 'firstname'>
-  }
+  documentId: string
+  poster: IArticlePoster
 }
 
-export type Tags = {
-  data: {
-    id: number
-    attributes: { name: string }
-  }[]
+export interface IArticlePoster {
+  id: number
+  name: string
+  alternativeText: null
+  caption: null
+  width: number
+  height: number
+  formats: {
+    large: IArticlePosterFormat
+    small: IArticlePosterFormat
+    medium: IArticlePosterFormat
+    thumbnail: IArticlePosterFormat
+  }
+  hash: string
+  ext: string
+  mime: string
+  size: number
+  url: string
+  previewUrl: null
+  provider: string
+  provider_metadata: null
+  createdAt: Date
+  updatedAt: Date
+  documentId: string
+  locale: null
+  publishedAt: Date
 }
 
-export type AllArticleResponse = {
-  data: Exclude<Article, 'poster'>[]
-  meta: {
-    pagination: {
-      page: number
-      pageSize: number
-      pageCount: number
-      total: number
-    }
-  }
-}
-export type Poster = {
-  id: 3
-  attributes: {
-    name: string
-    alternativeText?: string
-    caption?: string
-    width: number
-    height: number
-    formats: {
-      small: PosterFormat
-      medium: PosterFormat
-      thumbnail: PosterFormat
-    }
-    hash: string
-    ext: string
-    mime: string
-    size: number
-    url: string
-    previewUrl: null
-    provider: string
-    provider_metadata: null
-    createdAt: string
-    updatedAt: string
-  }
-}
-
-export type PosterFormat = {
+export interface IArticlePosterFormat {
   ext: string
   url: string
   hash: string
@@ -83,7 +64,16 @@ export type PosterFormat = {
   sizeInBytes: number
 }
 
-export type SingeArticleResponse = {
-  data: Article
-  meta: Record<string, any>
+export interface IAllArticleResponseMeta {
+  pagination: {
+    page: number
+    pageSize: number
+    pageCount: number
+    total: number
+  }
+}
+
+export interface ISingleArticleResponse {
+  data: IArticle
+  meta: never
 }

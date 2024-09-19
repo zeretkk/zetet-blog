@@ -2,7 +2,6 @@
 import { FC } from 'react'
 import { useArticleByIdQuery } from '@/lib/api/articles/articles.query'
 import dayjs from 'dayjs'
-import { notFound } from 'next/navigation'
 import classes from './articleview.module.scss'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import { Anchor, Group, Text, Title } from '@mantine/core'
@@ -10,16 +9,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 type Props = {
-  id: number
+  id: string
 }
 
 export const ArticleView: FC<Props> = ({ id }) => {
-  const { data } = useArticleByIdQuery(id)
-  const article = data?.attributes
+  console.log('id', id)
+  const { data: article } = useArticleByIdQuery(id)
   if (!article) {
-    notFound()
+    return null
   }
-  console.log(article.poster)
   return (
     <div className={classes.wrapper}>
       <article className={classes.content}>
@@ -34,7 +32,7 @@ export const ArticleView: FC<Props> = ({ id }) => {
             <Image
               className={classes.image}
               alt={article.title}
-              src={article.poster.data.attributes.url}
+              src={article.poster.formats.large.url}
               width={600}
               height={300}
             />

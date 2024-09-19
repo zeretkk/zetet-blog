@@ -12,54 +12,44 @@ type Props = {
   }
 }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const articleId = parseInt(params.id)
-  if (isNaN(articleId)) {
-    return {
-      title: 'NotFoundError',
-    }
-  }
   const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(ArticleByIdQueryOptions(articleId))
-  const data = queryClient.getQueryData(ArticleByIdQueryOptions(articleId).queryKey)
+  await queryClient.prefetchQuery(ArticleByIdQueryOptions(params.id))
+  const data = queryClient.getQueryData(ArticleByIdQueryOptions(params.id).queryKey)
   if (!data) {
     return {
       title: 'NotFoundError',
     }
   }
   return {
-    title: data.attributes.title,
-    description: data.attributes.description,
-    authors: data.attributes?.author?.data?.attributes
-      ? [{ name: data.attributes?.author?.data.attributes.firstname }]
-      : undefined,
+    title: data.title,
+    description: data.description,
+    // authors: data.attributes?.author?.data?.attributes
+    //   ? [{ name: data.attributes?.author?.data.attributes.firstname }]
+    //   : undefined,
     twitter: {
-      title: data.attributes.title,
+      title: data.title,
       // images: data.attributes.posterUrl,
-      description: data.attributes.description,
+      description: data.description,
     },
     openGraph: {
-      title: data.attributes.title,
+      title: data.title,
       // images: data.attributes.posterUrl,
-      description: data.attributes.description,
+      description: data.description,
     },
   }
 }
 
 const ArticlePage: NextPage<Props> = async ({ params: { id } }) => {
-  const articleId = parseInt(id)
-  if (isNaN(articleId)) {
-    notFound()
-  }
   const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(ArticleByIdQueryOptions(articleId))
-  if (!queryClient.getQueryData(ArticleByIdQueryOptions(articleId).queryKey)) {
+  await queryClient.prefetchQuery(ArticleByIdQueryOptions(id))
+  if (!queryClient.getQueryData(ArticleByIdQueryOptions(id).queryKey)) {
     notFound()
   }
 
   return (
     <Container>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <ArticleView id={articleId} />
+        <ArticleView id={id} />
       </HydrationBoundary>
     </Container>
   )
