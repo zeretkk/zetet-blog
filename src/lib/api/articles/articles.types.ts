@@ -61,7 +61,7 @@ export type Poster = {
     ext: string
     mime: string
     size: number
-    url: number
+    url: string
     previewUrl: null
     provider: string
     provider_metadata: null

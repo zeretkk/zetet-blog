@@ -19,6 +19,7 @@ export const ArticleView: FC<Props> = ({ id }) => {
   if (!article) {
     notFound()
   }
+  console.log(article.poster)
   return (
     <div className={classes.wrapper}>
       <article className={classes.content}>
@@ -33,7 +34,7 @@ export const ArticleView: FC<Props> = ({ id }) => {
             <Image
               className={classes.image}
               alt={article.title}
-              src={article.poster.data.attributes.formats.medium.url}
+              src={article.poster.data.attributes.url}
               width={600}
               height={300}
             />

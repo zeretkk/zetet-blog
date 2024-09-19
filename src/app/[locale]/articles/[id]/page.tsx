@@ -29,7 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: data.attributes.title,
     description: data.attributes.description,
-    authors: [{ name: data.attributes.author.data.attributes.firstname }],
+    authors: data.attributes?.author?.data?.attributes
+      ? [{ name: data.attributes?.author?.data.attributes.firstname }]
+      : undefined,
     twitter: {
       title: data.attributes.title,
       // images: data.attributes.posterUrl,
