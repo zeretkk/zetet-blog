@@ -36,7 +36,7 @@ export const getArticlesQueryOptions = (locale: 'ru' | 'en' = 'ru') =>
         : null,
   })
 
-export const ArticleByIdQueryOptions = (id: string) =>
+export const ArticleByIdQueryOptions = (id: string, locale: 'ru' | 'en') =>
   queryOptions({
     queryKey: ['article', id],
     queryFn: () =>
@@ -52,6 +52,7 @@ export const ArticleByIdQueryOptions = (id: string) =>
               },
               poster: true,
             },
+            locale,
           },
         })
         .then(({ data }) => data.data),
@@ -61,6 +62,6 @@ export const useArticlesQuery = () => {
   const locale = useCurrentLocale()
   return useInfiniteQuery(getArticlesQueryOptions(locale))
 }
-export const useArticleByIdQuery = (id: string) => {
-  return useQuery(ArticleByIdQueryOptions(id))
+export const useArticleByIdQuery = (id: string, locale: 'ru' | 'en') => {
+  return useQuery(ArticleByIdQueryOptions(id, locale))
 }

@@ -7,7 +7,7 @@ export interface IAllArticleResponse {
 
 export type IArticleItem = Pick<
   IArticle,
-  'id' | 'documentId' | 'title' | 'description' | 'publishedAt' | 'updatedAt'
+  'id' | 'documentId' | 'title' | 'description' | 'publishedAt' | 'updatedAt' | 'tags'
 >
 
 export interface IArticle {
@@ -21,6 +21,11 @@ export interface IArticle {
   locale: string
   documentId: string
   poster: IArticlePoster
+  tags: {
+    id: number
+    documentId: string
+    name: string
+  }[]
 }
 
 export interface IArticlePoster {

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 import { apiClient } from '@/lib/api/apiClient'
 import qs from 'qs'
-import { AllArticleResponse } from '@/lib/api/articles/articles.types'
+import { IAllArticleResponse } from '@/lib/api/articles/articles.types'
 import dayjs from 'dayjs'
 
 const getArticlesUrl = async () => {
@@ -15,10 +15,10 @@ const getArticlesUrl = async () => {
     locale: ['en'],
   })
   try {
-    const articles = await apiClient.get<AllArticleResponse>(`/articles?${params}`)
+    const articles = await apiClient.get<IAllArticleResponse>(`/articles?${params}`)
     return articles?.data?.data?.map((item) => ({
-      url: `${process.env.NEXT_PUBLIC_BASE}/articles/${item.id}`,
-      lastModified: dayjs(item.attributes.createdAt).toDate(),
+      url: `${process.env.NEXT_PUBLIC_BASE}/articles/${item.documentId}`,
+      lastModified: dayjs(item.publishedAt).toDate(),
     }))
   } catch {
     return []
