@@ -7,15 +7,14 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import { Anchor, Group, Text, Title } from '@mantine/core'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useCurrentLocale } from '@/locales/client'
 
 type Props = {
   id: string
 }
 
 export const ArticleView: FC<Props> = ({ id }) => {
-  const locale = useCurrentLocale()
-  const { data: article } = useArticleByIdQuery(id, locale)
+  const { data: article } = useArticleByIdQuery(id)
+  console.log('view\n')
   if (!article) {
     return null
   }

@@ -2,16 +2,14 @@
 import { FC, useContext } from 'react'
 import { Box, Card, ColorPicker, ColorSwatch, Group, Popover } from '@mantine/core'
 import { BoxShadowContext } from './BoxShadowContext'
-import { useScopedI18n } from '@/locales/client'
 
 export const BoxShadowCanvas: FC = () => {
   const { canvasData, setCanvasParam, data } = useContext(BoxShadowContext)
-  const t = useScopedI18n('tools.boxshadow')
   return (
     <>
       <Group>
         <Group>
-          {t('CanvasColor')}
+          Цвет полотна
           <Popover>
             <Popover.Target>
               <ColorSwatch color={canvasData.background} />
@@ -31,7 +29,7 @@ export const BoxShadowCanvas: FC = () => {
           </Popover>
         </Group>
         <Group>
-          {t('CardColor')}
+          Цвет карточки
           <Popover>
             <Popover.Target>
               <ColorSwatch color={canvasData.card} />

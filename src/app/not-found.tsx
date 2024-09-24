@@ -2,14 +2,12 @@ import { Metadata, NextPage } from 'next'
 import Image from 'next/image'
 import classes from './not-found.module.scss'
 import Link from 'next/link'
-import { setStaticParamsLocale } from 'next-international/server'
 
 export const metadata: Metadata = {
   title: 'Resource not found',
 }
 
 const NotFoundPage: NextPage = async () => {
-  setStaticParamsLocale('en')
   return (
     <div className={classes.wrapper}>
       <Image

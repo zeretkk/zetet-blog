@@ -2,12 +2,10 @@
 import { FC, useContext, useEffect } from 'react'
 import { useForm } from '@mantine/form'
 import { Box, Card, ColorPicker, Slider, Stack, Switch, Text } from '@mantine/core'
-import { useScopedI18n } from '@/locales/client'
 import { BoxShadowContext } from './BoxShadowContext'
 
 export const BoxShadowForms: FC = () => {
   const { setData } = useContext(BoxShadowContext)
-  const t = useScopedI18n('tools.boxshadow')
   const form = useForm({
     initialValues: {
       horizontal: 8,
@@ -24,10 +22,10 @@ export const BoxShadowForms: FC = () => {
   return (
     <Card px={'lg'} py={'md'} mih={'100%'}>
       <Stack>
-        <Switch label={t('inset')} key={form.key('isInset')} {...form.getInputProps('isInset')} />
+        <Switch label='Внутренняя' key={form.key('isInset')} {...form.getInputProps('isInset')} />
         <Box py={'sm'}>
           <Text mb={0} pb={0}>
-            {t('horizontal')}
+            Горизонтальное смещение
           </Text>
           <Slider
             min={-100}
@@ -46,7 +44,7 @@ export const BoxShadowForms: FC = () => {
         </Box>
         <Box py={'sm'}>
           <Text mb={0} pb={0}>
-            {t('vertical')}
+            Вертикальное смещение
           </Text>
           <Slider
             min={-100}
@@ -65,7 +63,7 @@ export const BoxShadowForms: FC = () => {
         </Box>
         <Box py={'sm'}>
           <Text mb={0} pb={0}>
-            {t('blur')}
+            Размытие
           </Text>
           <Slider
             min={-100}
@@ -84,7 +82,7 @@ export const BoxShadowForms: FC = () => {
         </Box>
         <Box py={'sm'}>
           <Text mb={0} pb={0}>
-            {t('spread')}
+            Растяжение
           </Text>
           <Slider
             min={-100}
@@ -103,7 +101,7 @@ export const BoxShadowForms: FC = () => {
         </Box>
         <Box py={'sm'}>
           <Text mb={0} pb={0}>
-            {t('color')}
+            Цвет
           </Text>
 
           <ColorPicker

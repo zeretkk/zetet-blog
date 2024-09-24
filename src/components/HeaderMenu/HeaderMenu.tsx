@@ -4,12 +4,10 @@ import { FC, useState } from 'react'
 import classes from './headermenu.module.scss'
 import Link from 'next/link'
 import clsx from 'clsx'
-import { useScopedI18n } from '@/locales/client'
 import { IconMenu } from '@tabler/icons-react'
 
 export const HeaderMenu: FC = () => {
   const [opened, setOpened] = useState(false)
-  const t = useScopedI18n('header')
 
   return (
     <Menu trigger='click-hover' opened={opened} onChange={setOpened}>
@@ -38,7 +36,7 @@ export const HeaderMenu: FC = () => {
             itemLabel: classes.itemLabel,
           }}
         >
-          {t('home')}
+          Главная
         </MenuItem>
         <MenuItem
           component={Link}
@@ -52,7 +50,7 @@ export const HeaderMenu: FC = () => {
             itemLabel: classes.itemLabel,
           }}
         >
-          {t('about')}
+          Информация
         </MenuItem>
         <MenuItem
           component={Link}
@@ -66,7 +64,7 @@ export const HeaderMenu: FC = () => {
             itemLabel: classes.itemLabel,
           }}
         >
-          {t('blog')}
+          Блог
         </MenuItem>
         <MenuItem
           component={Link}
@@ -80,7 +78,7 @@ export const HeaderMenu: FC = () => {
             itemLabel: classes.itemLabel,
           }}
         >
-          {t('tools')}
+          Инструменты
         </MenuItem>
       </MenuDropdown>
     </Menu>

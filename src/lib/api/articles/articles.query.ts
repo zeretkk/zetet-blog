@@ -6,9 +6,8 @@ import {
 } from '@tanstack/react-query'
 import { apiClient } from '../apiClient'
 import { IAllArticleResponse, ISingleArticleResponse } from './articles.types'
-import { useCurrentLocale } from '@/locales/client'
 
-export const getArticlesQueryOptions = (locale: 'ru' | 'en' = 'ru') =>
+export const getArticlesQueryOptions = () =>
   infiniteQueryOptions({
     queryKey: ['articles'],
     queryFn: ({ pageParam }) =>
@@ -25,7 +24,7 @@ export const getArticlesQueryOptions = (locale: 'ru' | 'en' = 'ru') =>
               },
             },
             fields: ['title', 'description', 'publishedAt', 'updatedAt'],
-            locale: locale,
+            locale: 'ru',
           },
         })
         .then((data) => data.data),
@@ -36,7 +35,7 @@ export const getArticlesQueryOptions = (locale: 'ru' | 'en' = 'ru') =>
         : null,
   })
 
-export const ArticleByIdQueryOptions = (id: string, locale: 'ru' | 'en') =>
+export const ArticleByIdQueryOptions = (id: string) =>
   queryOptions({
     queryKey: ['article', id],
     queryFn: () =>
@@ -52,16 +51,15 @@ export const ArticleByIdQueryOptions = (id: string, locale: 'ru' | 'en') =>
               },
               poster: true,
             },
-            locale,
+            locale: 'ru',
           },
         })
         .then(({ data }) => data.data),
   })
 
 export const useArticlesQuery = () => {
-  const locale = useCurrentLocale()
-  return useInfiniteQuery(getArticlesQueryOptions(locale))
+  return useInfiniteQuery(getArticlesQueryOptions())
 }
-export const useArticleByIdQuery = (id: string, locale: 'ru' | 'en') => {
-  return useQuery(ArticleByIdQueryOptions(id, locale))
+export const useArticleByIdQuery = (id: string) => {
+  return useQuery(ArticleByIdQueryOptions(id))
 }

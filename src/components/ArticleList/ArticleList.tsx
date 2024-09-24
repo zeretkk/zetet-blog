@@ -5,7 +5,6 @@ import { FC } from 'react'
 import { ArticleItem } from '@/components/ArticleItem/ArticleItem'
 import { ArticleItemSkeleton } from '@/components/ArticleItem/ArticleItemSkeleton'
 import { Button, Center, Flex } from '@mantine/core'
-import { useI18n } from '@/locales/client'
 
 export const ArticleList: FC = () => {
   const {
@@ -15,10 +14,11 @@ export const ArticleList: FC = () => {
     isFetchingNextPage,
     fetchNextPage,
   } = useArticlesQuery()
-  const t = useI18n()
+
   if (!isLoading && (articles?.pages?.[0]?.meta?.pagination?.pageCount ?? 0) < 1) {
-    return <Center>{t('tech.no-records')}</Center>
+    return <Center>Записей не найдено</Center>
   }
+
   return (
     <Flex align={'stretch'} direction={'column'} gap={'md'} py='md'>
       {isLoading ? (
@@ -40,7 +40,7 @@ export const ArticleList: FC = () => {
             fetchNextPage()
           }}
         >
-          {t('button.more')}
+          Больше
         </Button>
       )}
     </Flex>

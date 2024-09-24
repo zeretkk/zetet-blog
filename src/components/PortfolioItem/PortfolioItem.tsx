@@ -1,4 +1,3 @@
-import { getScopedI18n } from '@/locales/server'
 import Image from 'next/image'
 import { FC } from 'react'
 import classes from './portfolioitem.module.scss'
@@ -14,7 +13,6 @@ type Props = {
 }
 
 export const PortfolioItem: FC<Props> = async ({ project }) => {
-  const t = await getScopedI18n('about.projects')
   return (
     <Card>
       <Title order={3}>{project.title}</Title>
@@ -27,13 +25,9 @@ export const PortfolioItem: FC<Props> = async ({ project }) => {
           height={600}
         />
       </CardSection>
-      <Stack>
-        <Text>
-          {t('position')}: {project.position}
-        </Text>
-        <Text>
-          {t('stack')}: {project.stack.join(', ')}
-        </Text>
+      <Stack mt={'sm'}>
+        <Text>Должность: {project.position}</Text>
+        <Text>Стэк технологий: {project.stack.join(', ')}</Text>
         <Text>{project.description}</Text>
       </Stack>
     </Card>

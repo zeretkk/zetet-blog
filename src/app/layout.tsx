@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
-import { getScopedI18n } from '@/locales/server'
 import { ColorSchemeScript } from '@mantine/core'
-import Providers from '@/app/[locale]/providers'
+import Providers from '@/app/providers'
+import '@mantine/core/styles.css'
 import './globals.scss'
 import { JetBrains_Mono, Rubik, Source_Serif_4 } from 'next/font/google'
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getScopedI18n('meta.main')
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_BASE ?? 'https://zeret.pw'),
     title: {
@@ -14,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: 'zeRET | %s',
       default: 'zeRET',
     },
-    description: t('description'),
+    description: 'персональная страница web-разработчика',
     creator: 'zeret',
     publisher: 'zeret',
     openGraph: {
@@ -22,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
         template: 'zeRET | %s',
         default: 'zeRET',
       },
-      description: t('description'),
+      description: 'персональная страница web-разработчика',
       images: '/codeSych.png',
     },
     twitter: {
@@ -30,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
         template: 'zeRET | %s',
         default: 'zeRET',
       },
-      description: t('description'),
+      description: 'персональная страница web-разработчика',
       images: '/codeSych.png',
     },
   }
@@ -53,7 +54,9 @@ export default function RootLayout({
       </head>
       <body className={`${heading.variable} ${sourceSerif.variable} ${jbMono.variable}`}>
         <Providers headingFont={heading} textFont={jbMono}>
+          <Header />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

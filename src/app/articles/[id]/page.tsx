@@ -5,7 +5,6 @@ import { ArticleByIdQueryOptions } from '@/lib/api/articles/articles.query'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
 import { ArticleView } from '@/components/ArticleView/ArticleView'
 import { Container } from '@mantine/core'
-import { getCurrentLocale } from '@/locales/server'
 
 type Props = {
   params: {
@@ -14,9 +13,8 @@ type Props = {
 }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const queryClient = getQueryClient()
-  const locale = getCurrentLocale()
-  await queryClient.prefetchQuery(ArticleByIdQueryOptions(params.id, locale))
-  const data = queryClient.getQueryData(ArticleByIdQueryOptions(params.id, locale).queryKey)
+  await queryClient.prefetchQuery(ArticleByIdQueryOptions(params.id))
+  const data = queryClient.getQueryData(ArticleByIdQueryOptions(params.id).queryKey)
   if (!data) {
     return {
       title: 'NotFoundError',
@@ -43,10 +41,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const ArticlePage: NextPage<Props> = async ({ params: { id } }) => {
   const queryClient = getQueryClient()
-  const locale = getCurrentLocale()
-  await queryClient.prefetchQuery(ArticleByIdQueryOptions(id, locale))
-  if (!queryClient.getQueryData(ArticleByIdQueryOptions(id, locale).queryKey)) {
-    notFound()
+  await queryClient.prefetchQuery(ArticleByIdQueryOptions(id))
+  if (!queryClient.getQueryData(ArticleByIdQueryOptions(id).queryKey)) {
+    console.log('not found master Article \n')
+    return notFound()
   }
 
   return (
