@@ -3,10 +3,9 @@ import { FC } from 'react'
 import { useArticleByIdQuery } from '@/lib/api/articles/articles.query'
 import dayjs from 'dayjs'
 import classes from './articleview.module.scss'
-import { BlocksRenderer } from '@strapi/blocks-react-renderer'
-import { Anchor, Group, Text, Title } from '@mantine/core'
-import Link from 'next/link'
+import { Group, Text, Title } from '@mantine/core'
 import Image from 'next/image'
+import { CustomBlockRenderer } from '@/components/CustomBlockRenderer/CustomBlockRenderer'
 
 type Props = {
   id: string
@@ -40,26 +39,7 @@ export const ArticleView: FC<Props> = ({ id }) => {
         </div>
         <hr />
         <div className={classes.body}>
-          <BlocksRenderer
-            content={article.body}
-            blocks={{
-              paragraph: ({ children }) => (
-                <Text c={'white'} my={'sm'}>
-                  {children}
-                </Text>
-              ),
-              heading: ({ children, level }) => (
-                <Title c={'white'} order={level} mt={'md'} mb={'sm'}>
-                  {children}
-                </Title>
-              ),
-              link: ({ children, url }) => (
-                <Anchor component={Link} href={url} c={'purple'} underline={'always'}>
-                  {children}
-                </Anchor>
-              ),
-            }}
-          />
+          <CustomBlockRenderer body={article.body} />
         </div>
       </article>
     </div>
