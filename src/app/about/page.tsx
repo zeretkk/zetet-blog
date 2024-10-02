@@ -1,7 +1,7 @@
 import { Metadata, NextPage } from 'next'
 
 import { Container } from '@mantine/core'
-import { AboutView } from '@/components/AboutView/AboutView'
+import { AboutView } from '@/components/AboutView'
 import { getQueryClient } from '@/lib/queryClient'
 import { AboutQueryOptions } from '@/lib/api/about/about.query'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'

@@ -21,7 +21,7 @@ const BlogPage: NextPage = async () => {
   return (
     <Container mih={'100dvh'}>
       <Title my={'md'} order={1}>
-        Blog
+        Блог
       </Title>
       {/*{locale !== 'ru' && (*/}
       {/*  <Alert icon={<IconExclamationCircle />} color={'green'}>*/}
