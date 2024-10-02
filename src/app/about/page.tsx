@@ -5,23 +5,22 @@ import { AboutView } from '@/components/AboutView/AboutView'
 import { getQueryClient } from '@/lib/queryClient'
 import { AboutQueryOptions } from '@/lib/api/about/about.query'
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+const queryClient = getQueryClient()
 
 export async function generateMetadata(): Promise<Metadata> {
-  const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(AboutQueryOptions)
-  const data = queryClient.getQueryData(AboutQueryOptions.queryKey)
+  const data = await queryClient.fetchQuery(AboutQueryOptions)
   return {
     title: 'Информация о разработчике',
     description: 'персональная страница web-разработчика',
     twitter: {
       title: 'Информация о разработчике',
       description: 'персональная страница web-разработчика',
-      images: data?.avatar,
+      images: data?.avatar?.formats?.thumbnail?.url,
     },
     openGraph: {
       title: 'Информация о разработчике',
       description: 'персональная страница web-разработчика',
-      images: data?.avatar,
+      images: data?.avatar?.formats?.thumbnail?.url,
     },
   }
 }
@@ -29,7 +28,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export const revalidate = 10800
 
 const AboutPage: NextPage = async () => {
-  const queryClient = getQueryClient()
   await queryClient.prefetchQuery(AboutQueryOptions)
   return (
     <Container mb={'1.5rem'}>
