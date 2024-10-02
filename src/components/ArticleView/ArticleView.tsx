@@ -43,9 +43,13 @@ export const ArticleView: FC<Props> = ({ id }) => {
           <BlocksRenderer
             content={article.body}
             blocks={{
-              paragraph: ({ children }) => <Text c={'white'}>{children}</Text>,
+              paragraph: ({ children }) => (
+                <Text c={'white'} my={'sm'}>
+                  {children}
+                </Text>
+              ),
               heading: ({ children, level }) => (
-                <Title c={'white'} order={level}>
+                <Title c={'white'} order={level} mt={'md'} mb={'sm'}>
                   {children}
                 </Title>
               ),
