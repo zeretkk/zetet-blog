@@ -11,10 +11,10 @@ type Props = {
     id: string
   }
 }
+const queryClient = getQueryClient()
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(ArticleByIdQueryOptions(params.id))
-  const data = queryClient.getQueryData(ArticleByIdQueryOptions(params.id).queryKey)
+  const data = await queryClient.fetchQuery(ArticleByIdQueryOptions(params.id))
   if (!data) {
     return {
       title: 'NotFoundError',
@@ -40,7 +40,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const ArticlePage: NextPage<Props> = async ({ params: { id } }) => {
-  const queryClient = getQueryClient()
   await queryClient.prefetchQuery(ArticleByIdQueryOptions(id))
   if (!queryClient.getQueryData(ArticleByIdQueryOptions(id).queryKey)) {
     return notFound()
