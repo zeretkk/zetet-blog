@@ -43,7 +43,6 @@ const ArticlePage: NextPage<Props> = async ({ params: { id } }) => {
   const queryClient = getQueryClient()
   await queryClient.prefetchQuery(ArticleByIdQueryOptions(id))
   if (!queryClient.getQueryData(ArticleByIdQueryOptions(id).queryKey)) {
-    console.log('not found master Article \n')
     return notFound()
   }
 

@@ -13,7 +13,6 @@ type Props = {
 
 export const ArticleView: FC<Props> = ({ id }) => {
   const { data: article } = useArticleByIdQuery(id)
-  console.log('view\n')
   if (!article) {
     return null
   }
